@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Ruche de la Gloire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-honeycomb"></div>
+
+    <main class="hive-container">
+        
+        <h1 id="queen-title">La Ruche de la Gloire</h1>
+        <p class="subtitle">Déposez votre nectar (message) pour la Reine.</p>
+
+        <form id="gloryForm" action="process.php" method="POST">
+            
+            <div class="honeycomb-grid">
+                <div class="hex-wrapper">
+                    <div class="hex-content">
+                        <label for="name">Votre Nom d'Abeille</label>
+                        <input type="text" id="name" name="name" required placeholder="Bizzz Lightyear">
+                    </div>
+                </div>
+
+                <div class="hex-wrapper">
+                    <div class="hex-content">
+                        <label for="email">Fréquence Radio (Email)</label>
+                        <input type="email" id="email" name="email" required placeholder="buzz@ruche.com">
+                    </div>
+                </div>
+
+                <div class="hex-wrapper">
+                    <div class="hex-content">
+                        <label for="subject">Type de Fleur (Sujet)</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Question sur le miel...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-wrapper">
+                <label for="message">La Danse des Abeilles (Message)</label>
+                <textarea id="message" name="message" required placeholder="Racontez-nous tout..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-honey">
+                <span class="btn-text">Livrer le Nectar</span>
+                <span class="btn-drip"></span>
+            </button>
+
+        </form>
+    </main>
+
+    <div id="gloryModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="honey-pot">🍯</div>
+            <h2>FÉLICITATIONS !</h2>
+            <p class="winner-text">Vous avez gagné !</p>
+            <p>Votre message a été scellé dans la Cire Royale.</p>
+            <button class="close-btn" onclick="closeModal()">Retour à la ruche</button>
+        </div>
+        <div id="bees-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
