@@ -26,7 +26,7 @@ require_once "../../php/navbar.php";
         <nav class="text-sm mb-6" aria-label="breadcrumb">
             <ol class="list-reset flex text-gray-700">
                 <li>
-                    <a href="../../index.php" class="text-blue-600 hover:underline">Accueil</a>
+                    <a href="../../index.html" class="text-blue-600 hover:underline">Menu</a>
                 </li>
                 <li><span class="mx-2"> &gt; </span></li>
                 <li class="text-black font-semibold">À propos</li>
