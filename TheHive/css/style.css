@@ -18,3 +18,20 @@
 .custom-shape-divider-bottom-1764892962 .shape-fill {
     fill: #141204;
 }
+
+.tab-btn.border-blue-600 {
+    border-color: #2563eb !important; /* correspond à tailwind blue-600 */
+}
+.tab-btn.text-blue-600 {
+    color: #2563eb !important;
+}
+.tab-content.hidden {
+    display: none;
+}
+
+@font-face {
+    font-family: "ClashGrotesk";
+    src: url("../fonts/ClashGrotesk-semibold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
