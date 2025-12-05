@@ -39,6 +39,39 @@ require_once "../../php/navbar.php";
 
     <section class="py-20 px-4 md:px-8 bg-gray-50 relative z-30">
         <div class="max-w-7xl mx-auto">
+
+        <!-- input snake -->
+        <div class="mb-16 bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Accès Secret</h3>
+                <p class="text-gray-600 mb-4">Entrez le mot de passe pour accéder au jeu</p>
+                
+                <!-- Indice avec ronds colorés -->
+                <div class="flex justify-center items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-blue-500 shadow-md"></div>
+                    <div class="w-8 h-8 rounded-full bg-red-500 shadow-md"></div>
+                    <div class="w-8 h-8 rounded-full bg-orange-500 shadow-md"></div>
+                </div>
+                
+                <form id="snakeForm" class="space-y-4">
+                    <input 
+                        type="text" 
+                        id="snakePassword" 
+                        placeholder="3 mots"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-yellow-500 transition duration-200 text-center text-lg"
+                        autocomplete="off"
+                    >
+                    <button 
+                        type="submit"
+                        class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow transition duration-200"
+                    >
+                        Accéder au jeu
+                    </button>
+                </form>
+                
+                <p id="errorMessage" class="text-red-500 text-sm mt-4 hidden"></p>
+            </div>
+        </div>
             
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Les Trois Piliers NIRD</h2>
@@ -67,7 +100,7 @@ require_once "../../php/navbar.php";
                             <span class="mr-2">🐝</span> Lien avec The Hive
                         </h5>
                         <p class="text-sm text-gray-700 italic">
-                            Notre mission de reconditionnement de PC obsolètes et l'intégration de Linux sont au cœur de l'Inclusion. En redonnant une seconde vie à du matériel de faible coût, The Hive permet d'équiper des personnes et des structures qui n'auraient pas les moyens d'acquérir du neuf. L'accès à une machine performante et sécurisée devient une réalité pour tous.
+                            Notre mission de <span class="text-blue-600 font-semibold">reconditionnement</span> de PC obsolètes et l'intégration de Linux sont au cœur de l'Inclusion. En redonnant une seconde vie à du matériel de faible coût, The Hive permet d'équiper des personnes et des structures qui n'auraient pas les moyens d'acquérir du neuf. L'accès à une machine performante et sécurisée devient une réalité pour tous.
                         </p>
                     </div>
                 </div>
@@ -80,7 +113,7 @@ require_once "../../php/navbar.php";
                         <h4 class="text-2xl font-bold text-gray-800 mb-4">Durabilité</h4>
                         <h5 class="text-sm font-semibold text-gray-500 uppercase mb-4">Lutter Contre l'Obsolescence</h5>
                         <p class="text-gray-600 mb-6">
-                            La Durabilité est le combat contre l'obsolescence programmée et l'allongement du cycle de vie des équipements. C'est un engagement pour l'environnement, mais aussi pour la maîtrise des coûts.
+                            La <span style="color: #dc2626; font-weight: bold;">Durabilité</span> est le combat contre l'obsolescence programmée et l'allongement du cycle de vie des équipements. C'est un engagement pour l'environnement, mais aussi pour la maîtrise des coûts.
                         </p>
                     </div>
                     <div class="bg-gray-100 p-8 border-t-4 border-green-500">
@@ -109,7 +142,7 @@ require_once "../../php/navbar.php";
                             <span class="mr-2">🛡️</span> Lien avec The Hive
                         </h5>
                         <p class="text-sm text-gray-700 italic">
-                            The Hive promet activement le logiciel libre. Utiliser Linux, c'est choisir un environnement où l'utilisateur est maître de sa machine, garantissant la souveraineté des données et la transparence. C'est également un acte pédagogique : former les citoyens de demain à un numérique critique et écocitoyen.
+                            The Hive promet activement le logiciel libre. Utiliser <span style="color: orange; font-weight: bold;">Linux</span>, c'est choisir un environnement où l'utilisateur est maître de sa machine, garantissant la souveraineté des données et la transparence. C'est également un acte pédagogique : former les citoyens de demain à un numérique critique et écocitoyen.
                         </p>
                     </div>
                 </div>
@@ -127,5 +160,29 @@ require_once "../../php/navbar.php";
     <?php
     require_once "../../php/footer.php";
     ?>
+    
+    <script>
+        document.getElementById('snakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('snakePassword').value.trim().toLowerCase();
+            const validPasswords = ['reconditionnement', 'durabilité', 'durabilite', 'linux'];
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (validPasswords.includes(password)) {
+                // Redirection vers le jeu snake
+                window.location.href = '../../hidden_snake/abeille.html';
+            } else {
+                errorMessage.textContent = 'Mot de passe incorrect. Essayez encore !';
+                errorMessage.classList.remove('hidden');
+                document.getElementById('snakePassword').value = '';
+                
+                // Masquer le message d'erreur après 3 secondes
+                setTimeout(() => {
+                    errorMessage.classList.add('hidden');
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html> 
