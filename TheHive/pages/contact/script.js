@@ -1,98 +1,131 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('gloryForm');
-    const modal = document.getElementById('gloryModal');
-    
-    const title = document.getElementById('queen-title');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    const popup = document.getElementById('gloryPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+    const beeCursor = document.getElementById('beeCursor');
+    const logo = document.querySelector('.hive-logo');
+
+    document.addEventListener('mousemove', (e) => {
+        beeCursor.style.left = e.clientX + 'px';
+        beeCursor.style.top = e.clientY + 'px';
         
-        const btn = document.getElementById('submitBtn');
-        const originalText = btn.innerHTML;
-        
-        btn.innerHTML = "🐝 Bizzz Bizzz...";
-        
-        const formData = new FormData(form);
-        
-        fetch('process.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success) {
-                setTimeout(() => {
-                    openModal();
-                    btn.innerHTML = originalText;
-                    form.reset();
-                }, 1000);
-            } else {
-                alert("Une guêpe a bloqué le message ! " + data.message);
-                btn.innerHTML = originalText;
-            }
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            openModal(); 
-            btn.innerHTML = originalText;
-        });
+        const rot = Math.random() * 20 - 10;
+        beeCursor.style.transform = `rotate(${rot}deg)`;
     });
-});
 
-function openModal() {
-    const modal = document.getElementById('gloryModal');
-    modal.classList.remove('hidden');
-    createBeeConfetti();
-}
+    document.addEventListener('mousedown', () => {
+        beeCursor.style.transform = 'scale(0.8)';
+    });
+    document.addEventListener('mouseup', () => {
+        beeCursor.style.transform = 'scale(1) rotate(0deg)';
+    });
 
-function closeModal() {
-    const modal = document.getElementById('gloryModal');
-    modal.classList.add('hidden');
-    const container = document.getElementById('bees-container');
-    container.innerHTML = '';
-}
 
-function releaseTheSwarm() {
-    const body = document.body;
-    for(let i=0; i<50; i++) {
-        const bee = document.createElement('div');
-        bee.innerText = '🐝';
-        bee.style.position = 'fixed';
-        bee.style.left = '-50px';
-        bee.style.top = Math.random() * window.innerHeight + 'px';
-        bee.style.fontSize = (Math.random() * 30 + 10) + 'px';
-        bee.style.transition = `transform ${Math.random() * 2 + 2}s linear, left ${Math.random() * 2 + 2}s linear`;
-        bee.style.zIndex = '9999';
-        
-        document.body.appendChild(bee);
-        
-        setTimeout(() => {
-            bee.style.left = (window.innerWidth + 50) + 'px';
-            bee.style.transform = `translateY(${Math.random() * 200 - 100}px) rotate(90deg)`;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = form.querySelector('.queen-button');
+        const btnTxt = btn.querySelector('.btn-txt');
+        const originalTxt = btnTxt.textContent;
+
+        btnTxt.textContent = "OLALA ÇA PARTEEE ! 🍯";
+        btn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                form.reset();
+                showGloryPopup();
+            } else {
+                handleErrors(result.errors);
+                btnTxt.textContent = "AÏE ! Y'A UN HIC ! 🐝";
+                setTimeout(() => { btnTxt.textContent = originalTxt; }, 2000);
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert("La ruche est en panne. Réessaie plus tard !");
+        } finally {
+            btn.disabled = false;
+            if(btnTxt.textContent !== "AÏE ! Y'A UN HIC ! 🐝") {
+                 btnTxt.textContent = originalTxt;
+            }
+        }
+    });
+
+
+    function showGloryPopup() {
+        popup.classList.remove('hidden');
+        popup.classList.add('show');
+        launchConfetti();
+        let audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3');
+        audio.play();
+    }
+
+    closePopupBtn.addEventListener('click', () => {
+        popup.classList.remove('show');
+        setTimeout(() => { popup.classList.add('hidden'); }, 500);
+        stopConfetti();
+    });
+
+    function handleErrors(errors) {
+        errors.forEach(field => {
+            const input = document.getElementById(field);
+            const wrapper = input.closest('.hex-field-wrapper');
+            wrapper.classList.add('shake-error');
+            setTimeout(() => wrapper.classList.remove('shake-error'), 500);
+        });
+    }
+
+    logo.addEventListener('click', () => {
+        logo.classList.add('type-hive-vibration');
+        setTimeout(() => { logo.classList.remove('type-hive-vibration'); }, 1000);
+    });
+
+    let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiPosition = 0;
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === konamiCode[konamiPosition]) {
+            konamiPosition++;
+            if (konamiPosition === konamiCode.length) {
+                activateGodMode();
+                konamiPosition = 0;
+            }
+        } else {
+            konamiPosition = 0;
+        }
+    });
+
+    function activateGodMode() {
+        alert("MODE REINE DES ABEILLES ACTIVÉ ! TOUT DEVIENT DORÉ !");
+        document.documentElement.style.setProperty('--marron-fonce', '#F5C857');
+        document.body.style.backgroundColor = '#FFEE91';
+    }
+
+    let confettiInterval;
+    function launchConfetti() {
+        const container = document.getElementById('confetti');
+        confettiInterval = setInterval(() => {
+            const el = document.createElement('div');
+            el.classList.add('confetti');
+            el.style.left = Math.random() * 100 + '%';
+            el.style.backgroundColor = Math.random() > 0.5 ? '#F5C857' : '#E2852E';
+            el.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            container.appendChild(el);
+            setTimeout(() => el.remove(), 3000);
         }, 100);
-
-        setTimeout(() => {
-            bee.remove();
-        }, 4000);
     }
-}
 
-function createBeeConfetti() {
-    const container = document.getElementById('bees-container');
-    for(let i=0; i<30; i++) {
-        const bee = document.createElement('div');
-        bee.classList.add('bee');
-        bee.innerText = '🐝';
-        bee.style.left = Math.random() * 100 + '%';
-        bee.style.top = Math.random() * 100 + '%';
-        container.appendChild(bee);
-        animateBee(bee);
+    function stopConfetti() {
+        clearInterval(confettiInterval);
+        document.getElementById('confetti').innerHTML = '';
     }
-}
-
-function animateBee(bee) {
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    bee.style.transform = `translate(${x}px, ${y}px)`;
-    setTimeout(() => animateBee(bee), 1000 + Math.random() * 2000);
-}
+});

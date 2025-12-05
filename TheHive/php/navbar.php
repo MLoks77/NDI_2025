@@ -66,7 +66,7 @@
                 <span class="text-center text-base md:text-lg font-medium group-">NIRD</span>
             </a>
             <a 
-                href="../../pages/contact/contact.php"
+                href="../../pages/contact/contact.html"
                 class="flex flex-col items-center group"
                 style="text-decoration: none; color: #141204;"
             >
@@ -83,7 +83,7 @@
                 <span class="text-center text-base md:text-lg font-medium group-">Contact</span>
             </a>
             <a 
-                href="../../pages/login/login.php"
+                href="../pages/login/login.php"
                 class="flex flex-col items-center group"
                 style="text-decoration: none; color: #141204;"
             >

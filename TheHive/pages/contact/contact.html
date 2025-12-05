@@ -3,66 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The hive</title>
+    <title>Le Formulaire de la Gloire - La Ruche</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="bg-honeycomb"></div>
+    <div class="bee-cursor" id="beeCursor"><i class="fas fa-bug"></i></div>
 
-    <main class="hive-container">
-        
-        <h1 id="queen-title">The hive</h1>
-        <p class="subtitle">Déposez votre nectar (message) pour la Reine.</p>
+    <div class="hive-container">
+        <div class="logo-container type-hive-vibration">
+            <img src="../../images/logonirdnoir.png" alt="Beehive Logo" class="hive-logo">
+        </div>
+
+        <h1>Le Formulaire de la Gloire</h1>
+        <p class="subtitle">Remplis les alvéoles pour réclamer ton destin !</p>
 
         <form id="gloryForm" action="process.php" method="POST">
             
-            <div class="honeycomb-grid">
-                <div class="hex-wrapper">
-                    <div class="hex-content">
-                        <label for="name">Votre Nom d'Abeille</label>
-                        <input type="text" id="name" name="name" required placeholder="Bizzz Lightyear">
-                    </div>
-                </div>
-
-                <div class="hex-wrapper">
-                    <div class="hex-content">
-                        <label for="email">Fréquence Radio (Email)</label>
-                        <input type="email" id="email" name="email" required placeholder="buzz@ruche.com">
-                    </div>
-                </div>
-
-                <div class="hex-wrapper">
-                    <div class="hex-content">
-                        <label for="subject">Type de Fleur (Sujet)</label>
-                        <input type="text" id="subject" name="subject" required placeholder="Question sur le miel...">
-                    </div>
+            <div class="hex-field-wrapper color-1">
+                <div class="hex-field-content">
+                    <label for="nom"><i class="fas fa-user"></i> Ton Blaze (Nom)</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Capitaine Miel...">
                 </div>
             </div>
 
-            <div class="message-wrapper">
-                <label for="message">La Danse des Abeilles (Message)</label>
-                <textarea id="message" name="message" required placeholder="Racontez-nous tout..."></textarea>
+            <div class="hex-field-wrapper color-2">
+                <div class="hex-field-content">
+                    <label for="email"><i class="fas fa-at"></i> Ton Nectar (Email)</label>
+                    <input type="email" id="email" name="email" required placeholder="buzz@ruche.com...">
+                </div>
             </div>
 
-            <button type="submit" id="submitBtn" class="btn-honey">
-                <span class="btn-text">Livrer le Nectar</span>
-                <span class="btn-drip"></span>
+            <div class="hex-field-wrapper color-3">
+                <div class="hex-field-content">
+                    <label for="sujet"><i class="fas fa-crown"></i> Le Sujet Royal</label>
+                    <input type="text" id="sujet" name="sujet" required placeholder="J'AI GAGNÉ !">
+                </div>
+            </div>
+
+            <div class="hex-field-wrapper hex-textarea color-4">
+                <div class="hex-field-content">
+                    <label for="message"><i class="fas fa-sticky-note"></i> Ton Hymne (Message)</label>
+                    <textarea id="message" name="message" required placeholder="Déverse ton miel ici..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="queen-button">
+                <span class="btn-txt">ENVOYER LE BUZZ !</span>
+                <i class="fas fa-paper-plane icon-fly"></i>
             </button>
 
         </form>
-    </main>
+    </div>
 
-    <div id="gloryModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="honey-pot">🍯</div>
-            <h2>FÉLICITATIONS !</h2>
-            <p class="winner-text">Vous avez gagné !</p>
-            <p>Votre message a été scellé dans la Cire Royale.</p>
-            <button class="close-btn" onclick="closeModal()">Retour à la ruche</button>
+    <div id="gloryPopup" class="popup-overlay hidden">
+        <div class="popup-content hive-pop">
+            <div class="confetti-container" id="confetti"></div>
+            <i class="fas fa-trophy giant-icon"></i>
+            <h2>BZZZ ! C'EST DANS LA RUCHE !</h2>
+            <p>Félicitations, ton message a été téléporté à la Reine Mère.</p>
+            <p class="fun-fact">Fun Fact : Les abeilles battent des ailes 200 fois par seconde. Toi, tu viens de battre le record du formulaire le plus stylé.</p>
+            <button id="closePopup">Retour à la vie normale</button>
         </div>
-        <div id="bees-container"></div>
     </div>
 
     <script src="script.js"></script>
