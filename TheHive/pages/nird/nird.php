@@ -47,6 +47,7 @@ require_once "../../php/navbar.php";
                 <p class="text-gray-600 mb-4">Entrez le mot de passe pour accéder au jeu</p>
                 <p class="text-gray-600 mb-4">Ex: mot1 mot2 mot3</p>
                 <p class="text-gray-600 mb-4">aucun accent, aucune majuscule</p>
+                <p class="text-gray-600 mb-4">attention pas de exit</p>    
                 
                 <!-- Indice avec ronds colorés -->
                 <div class="flex justify-center items-center gap-3 mb-6">
