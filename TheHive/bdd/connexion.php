@@ -1,6 +1,7 @@
 <?php
 
 // Configuration de la base de données
+// tetxfyexygexge
 $host = 'localhost';
 $dbname = 'thehive';
 $username = 'root';
