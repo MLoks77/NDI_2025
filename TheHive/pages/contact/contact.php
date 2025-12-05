@@ -23,37 +23,42 @@ require_once "../../php/navbar.php";
 
 <body class="modern-contact-body">
 
-    <main class="modern-contact-main">
-        <div class="modern-contact-card">
-            <h1 class="modern-title">Contactez The Hive</h1>
-            <p class="modern-subtitle">Envoyez-nous un message pour toute question sur nos projets, la réutilisation ou
-                Linux.</p>
+    <main class="fondhalveola flex flex-col items-center justify-center w-full min-h-screen px-2 py-10">
+        <div class="bg-[#1e1e1e] text-[#e0e0e0] rounded-xl shadow-2xl border border-[#333] max-w-lg w-full p-10">
+            <h1 class="text-center text-3xl font-semibold mb-2 text-[#F5C857]">Contactez The Hive</h1>
+            <p class="text-center mb-8 text-[#a0a0a0] text-base">Envoyez-nous un message pour toute question sur nos projets, la réutilisation ou Linux.</p>
 
-            <form action="#" method="POST" class="modern-contact-form">
-
-                <div class="form-group-modern">
-                    <label for="nom">Nom / Organisation</label>
+            <form action="#" method="POST" class="space-y-5">
+                <div>
+                    <label for="nom" class="block mb-1 text-sm font-medium text-[#c0c0c0]">Nom / Organisation</label>
                     <input type="text" id="nom" name="nom" required
-                        placeholder="Votre nom ou le nom de votre organisation">
+                        placeholder="Votre nom ou le nom de votre organisation"
+                        class="w-full px-3 py-3 border border-[#444] rounded-md bg-[#2a2a2a] text-white focus:border-[#E2852E] focus:ring-2 focus:ring-[#E2852E]/30 outline-none transition duration-300" />
                 </div>
 
-                <div class="form-group-modern">
-                    <label for="email">Adresse E-mail</label>
-                    <input type="email" id="email" name="email" required placeholder="example@domaine.com">
+                <div>
+                    <label for="email" class="block mb-1 text-sm font-medium text-[#c0c0c0]">Adresse E-mail</label>
+                    <input type="email" id="email" name="email" required
+                        placeholder="example@domaine.com"
+                        class="w-full px-3 py-3 border border-[#444] rounded-md bg-[#2a2a2a] text-white focus:border-[#E2852E] focus:ring-2 focus:ring-[#E2852E]/30 outline-none transition duration-300" />
                 </div>
 
-                <div class="form-group-modern">
-                    <label for="sujet">Sujet du Message</label>
-                    <input type="text" id="sujet" name="sujet" required placeholder="Exemple : Demande de partenariat">
+                <div>
+                    <label for="sujet" class="block mb-1 text-sm font-medium text-[#c0c0c0]">Sujet du Message</label>
+                    <input type="text" id="sujet" name="sujet" required
+                        placeholder="Exemple : Demande de partenariat"
+                        class="w-full px-3 py-3 border border-[#444] rounded-md bg-[#2a2a2a] text-white focus:border-[#E2852E] focus:ring-2 focus:ring-[#E2852E]/30 outline-none transition duration-300" />
                 </div>
 
-                <div class="form-group-modern">
-                    <label for="message">Votre Message</label>
+                <div>
+                    <label for="message" class="block mb-1 text-sm font-medium text-[#c0c0c0]">Votre Message</label>
                     <textarea id="message" name="message" rows="6" required
-                        placeholder="Écrivez votre message ici..."></textarea>
+                        placeholder="Écrivez votre message ici..."
+                        class="w-full px-3 py-3 border border-[#444] rounded-md bg-[#2a2a2a] text-white focus:border-[#E2852E] focus:ring-2 focus:ring-[#E2852E]/30 outline-none transition duration-300 resize-y min-h-[100px]"></textarea>
                 </div>
 
-                <button type="submit" class="modern-submit-button">Envoyer</button>
+                <button type="submit"
+                    class="block w-full mt-8 py-4 bg-[#F5C857] text-[#1e1e1e] font-bold rounded-md text-lg transition-all duration-300 hover:bg-[#E2852E] hover:-translate-y-0.5 hover:shadow-lg">Envoyer</button>
             </form>
         </div>
     </main>
