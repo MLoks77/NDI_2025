@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decathlon Coach 2025 - Expérience Redesign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        decathlon: {
+                            blue: '#007DBC', // Bleu de marque
+                            dark: '#004f78',
+                            bglight: '#F8FAFC', // Gris très clair pour le fond droit
+                            textdark: '#1E293B' // equivalent slate-800
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', // Ombre très douce style "MindMender"
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Animation douce pour l'apparition des éléments */
+        .fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom style pour les radio cards */
+        .radio-card-input:checked+.radio-card-label {
+            border-color: #007DBC;
+            background-color: #EDF6FF;
+            /* Bleu très pâle */
+        }
+
+        .radio-card-input:checked+.radio-card-label .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-decathlon-textdark overflow-x-hidden">
+
+    <div class="min-h-screen w-full flex flex-col md:flex-row">
+
+        <div
+            class="w-full md:w-1/3 lg:w-1/4 bg-white p-8 lg:p-12 border-r border-gray-100 flex flex-col justify-between relative z-10 shadow-soft md:shadow-none">
+            <div>
+                <div class="flex items-center gap-2 mb-12">
+                    <img src="./images/g_logo-decathlon_blue_exclusion-zone-thumb.webp" alt="Decathlon logo">
+                </div>
+
+                <h1 class="text-3xl font-extrabold mb-4 leading-tight">Coaching en ligne</h1>
+                <p class="text-gray-500 mb-12">3 étapes pour générer votre séance personnalisée.</p>
+
+                <div class="space-y-0">
+                    <div class="flex items-start relative">
+                        <div class="absolute left-4 top-8 bottom-0 w-0.5 bg-gray-200 h-full"></div>
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-decathlon-blue text-white flex items-center justify-center font-bold z-10 ring-4 ring-white">
+                            1</div>
+                        <div class="ml-4 mb-8">
+                            <h3 class="font-bold text-lg text-decathlon-blue">Votre Objectif</h3>
+                            <p class="text-sm text-gray-400">Quel est votre objectif ?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start relative">
+                        <div class="absolute left-4 top-8 bottom-0 w-0.5 bg-gray-200 h-full"></div>
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold z-10 ring-4 ring-white">
+                            2</div>
+                        <div class="ml-4 mb-8">
+                            <h3 class="font-bold text-lg text-gray-400">Votre Niveau</h3>
+                            <p class="text-sm text-gray-400">Quelle est votre expérience?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start relative">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold z-10 ring-4 ring-white">
+                            3</div>
+                        <div class="ml-4">
+                            <h3 class="font-bold text-lg text-gray-400">Votre Lieu</h3>
+                            <p class="text-sm text-gray-400">Où allez-vous pratiquer ?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-2/3 lg:w-3/4 bg-decathlon-bglight p-6 md:p-12 lg:p-16 overflow-y-auto">
+
+            <div class="max-w-3xl mx-auto fade-up" id="main-container">
+
+                <div id="quiz-section">
+                    <div class="mb-10 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold">Profilage Sportif</h2>
+                        <span class="bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-500 shadow-sm">Étape
+                            1/3</span>
+                    </div>
+
+                    <form id="profiling-form" onsubmit="event.preventDefault(); generateProgram();">
+
+                        <div class="mb-12">
+                            <label class="block text-xl font-bold mb-6 text-decathlon-textdark">Quel est votre objectif
+                                principal ? <span class="text-gray-400 text-sm font-normal block mt-1">Sélectionnez une
+                                    option.</span></label>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <label class="relative group">
+                                    <input type="radio" name="goal" value="muscle" class="peer sr-only radio-card-input"
+                                        required>
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 group-hover:shadow-md h-full flex flex-col items-center text-center">
+                                        <span class="text-4xl mb-4 bg-gray-50 p-4 rounded-2xl">💪</span>
+                                        <span class="font-bold text-lg mb-2">Renforcement</span>
+                                        <span class="text-gray-500 text-sm">Se tonifier et prendre du muscle.</span>
+                                        <div
+                                            class="check-icon absolute top-4 right-4 text-decathlon-blue opacity-0 transform scale-50 transition-all duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="relative group">
+                                    <input type="radio" name="goal" value="zen" class="peer sr-only radio-card-input">
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 group-hover:shadow-md h-full flex flex-col items-center text-center">
+                                        <span class="text-4xl mb-4 bg-gray-50 p-4 rounded-2xl">🧘‍♀️</span>
+                                        <span class="font-bold text-lg mb-2">Souplesse / Zen</span>
+                                        <span class="text-gray-500 text-sm">Détente, yoga et mobilité.</span>
+                                        <div
+                                            class="check-icon absolute top-4 right-4 text-decathlon-blue opacity-0 transform scale-50 transition-all duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="relative group">
+                                    <input type="radio" name="goal" value="cardio"
+                                        class="peer sr-only radio-card-input">
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 group-hover:shadow-md h-full flex flex-col items-center text-center">
+                                        <span class="text-4xl mb-4 bg-gray-50 p-4 rounded-2xl">🏃‍♂️</span>
+                                        <span class="font-bold text-lg mb-2">Cardio / Perte</span>
+                                        <span class="text-gray-500 text-sm">Brûler des calories, endurance.</span>
+                                        <div
+                                            class="check-icon absolute top-4 right-4 text-decathlon-blue opacity-0 transform scale-50 transition-all duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-12">
+                            <label class="block text-xl font-bold mb-6 text-decathlon-textdark">Votre niveau actuel
+                                ?</label>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <label class="relative group">
+                                    <input type="radio" name="level" value="beginner"
+                                        class="peer sr-only radio-card-input" checked>
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 text-center">
+                                        <span class="font-bold text-lg block">Débutant</span>
+                                        <span class="text-sm text-gray-500">Première(s) fois</span>
+                                    </div>
+                                </label>
+                                <label class="relative group">
+                                    <input type="radio" name="level" value="intermediate"
+                                        class="peer sr-only radio-card-input">
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 text-center">
+                                        <span class="font-bold text-lg block">Intermédiaire</span>
+                                        <span class="text-sm text-gray-500">Régulier(e)</span>
+                                    </div>
+                                </label>
+                                <label class="relative group">
+                                    <input type="radio" name="level" value="advanced"
+                                        class="peer sr-only radio-card-input">
+                                    <div
+                                        class="radio-card-label bg-white p-6 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 text-center">
+                                        <span class="font-bold text-lg block">Expert</span>
+                                        <span class="text-sm text-gray-500">Addict(e) au sport</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-16">
+                            <label class="block text-xl font-bold mb-6 text-decathlon-textdark">Où pratiquez-vous
+                                ?</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <label class="relative group">
+                                    <input type="radio" name="place" value="home" class="peer sr-only radio-card-input"
+                                        checked>
+                                    <div
+                                        class="radio-card-label bg-white p-5 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 flex items-center gap-4">
+                                        <span class="text-2xl">🏠</span>
+                                        <span class="font-bold">À la maison</span>
+                                    </div>
+                                </label>
+                                <label class="relative group">
+                                    <input type="radio" name="place" value="gym" class="peer sr-only radio-card-input">
+                                    <div
+                                        class="radio-card-label bg-white p-5 rounded-3xl shadow-soft border-2 border-transparent cursor-pointer transition-all duration-300 flex items-center gap-4">
+                                        <span class="text-2xl">🏢</span>
+                                        <span class="font-bold">À la salle de sport</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="submit"
+                                class="group bg-decathlon-textdark text-white text-lg font-bold px-10 py-4 rounded-full hover:bg-decathlon-blue transition-all duration-300 shadow-lg flex items-center gap-3">
+                                Générer ma séance
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 group-hover:translate-x-1 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <div id="result-section" class="hidden fade-up">
+
+                    <div class="mb-8 flex justify-between items-end">
+                        <div>
+                            <p class="text-decathlon-blue font-bold mb-2 uppercase tracking-wider">Résultat personnalisé
+                            </p>
+                            <h2 class="text-4xl font-extrabold" id="result-title">Votre Exercice Cible</h2>
+                        </div>
+                        <button onclick="resetQuiz()"
+                            class="text-sm text-gray-500 underline hover:text-decathlon-blue transition">Refaire le
+                            test</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-12">
+                        <div class="bg-white p-8 rounded-[2rem] shadow-soft">
+                            <div
+                                class="bg-gray-50 rounded-3xl h-80 flex items-center justify-center relative overflow-hidden">
+                                <div id="exercise-visual" class="w-full h-full">
+                                    <!-- Video will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-[2rem] shadow-soft flex flex-col justify-center">
+                            <h3 class="font-bold text-xl mb-6 flex items-center">
+                                Comment faire le mouvement.
+                            </h3>
+                            <div id="exercise-instructions" class="space-y-6 text-gray-600 leading-relaxed text-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                            <span class="bg-yellow-400 h-8 w-1"></span>
+                            Équipement Recommandé pour pratiquer
+                        </h3>
+                        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // BASE DE DONNEES (Identique à avant)
+        const db = {
+            muscle: {
+                title: "Le Squat Poids de Corps",
+                videoId: "8ghtQpeWov8",
+                instructions: `
+                    <div><strong class="text-decathlon-textdark block mb-1">1. Départ</strong> Pieds largeur d'épaules, pointes légèrement vers l'extérieur (10h10).</div>
+                    <div><strong class="text-decathlon-textdark block mb-1">2. Mouvement</strong> Inspirez et descendez les fesses en arrière comme pour vous asseoir. Dos droit.</div>
+                    <div><strong class="text-decathlon-textdark block mb-1">3. Point clé</strong> Les genoux ne doivent pas rentrer vers l'intérieur. Talons au sol.</div>
+                    <div><strong class="text-decathlon-textdark block mb-1">4. Retour</strong> Expirez en poussant fort sur les talons. Contractez les fessiers en haut.</div>
+                    <div class="mt-6 bg-yellow-50 p-4 rounded-2xl text-yellow-900 text-base border border-yellow-100">
+                        <strong>💡 Conseil Coach :</strong> Regardez l'horizon pour ne pas arrondir le haut du dos.
+                    </div>
+                `,
+                products: [
+                    { name: "Jogging Adidas", price: "49.99€", img: "./images/jogging_adidas.avif", desc: "Pantalon confortable et accessible." },
+                    { name: "Kettlebell Soft 4kg", price: "27.95€", img: "./images/kettlebell-pro-musculation-fonte-4-a-30kg.avif", desc: "Pour soulever lourd en toute circonstance." },
+                    { name: "Shaker Whey Isolate", price: "7.99€", img: "./images/classic-shaker-avec-tamis-500ml.avif", desc: "Pour faire ses meilleurs shakes protéinés." }
+                ]
+            },
+            zen: {
+                title: "Le Chien Tête en Bas",
+                videoId: "8ghtQpeWov8",
+                instructions: `
+                     <div><strong class="text-decathlon-textdark block mb-1">1. Départ</strong> À quatre pattes, mains sous les épaules, genoux sous les hanches.</div>
+                     <div><strong class="text-decathlon-textdark block mb-1">2. Mouvement</strong> Poussez dans vos mains, levez les hanches vers le ciel, jambes tendues.</div>
+                     <div><strong class="text-decathlon-textdark block mb-1">3. Alignement</strong> Votre corps forme un 'V' inversé. Relâchez la tête.</div>
+                    <div class="mt-6 bg-blue-50 p-4 rounded-2xl text-blue-900 text-base border border-blue-100">
+                        <strong>💡 Conseil Coach :</strong> Si le dos s'arrondit, pliez légèrement les genoux. Priorité au dos droit.
+                    </div>
+                `,
+                products: [
+                    { name: "Tapis Yoga ", price: "100€", img: "./images/416a8b5c-934a-4795-870c-716d717f3a65_c30c1c64.avif", desc: "Gomme naturelle adhérente." },
+                    { name: "Briques Yoga", price: "10.99€", img: "./images/brique-de-yoga-en-liege.avif", desc: "Aide à la posture." },
+                    { name: "Tenue Yoga Flow", price: "55€", img: "./images/sous-vetement-haut-keepdry-warm-jaune-adulte.avif", desc: "Tissu extensible doux." }
+                ]
+            },
+            cardio: {
+                title: "Burpees Modifiés",
+                videoId: "8ghtQpeWov8",
+                instructions: `
+                    <div><strong class="text-decathlon-textdark block mb-1">1. Phase Sol</strong> Debout, fléchissez les jambes, mains au sol.</div>
+                    <div><strong class="text-decathlon-textdark block mb-1">2. Planche</strong> Lancez les pieds en arrière en position gainage.</div>
+                    <div><strong class="text-decathlon-textdark block mb-1">3. Saut</strong> Ramenez les pieds et sautez verticalement bras au ciel.</div>
+                    <div class="mt-6 bg-red-50 p-4 rounded-2xl text-red-900 text-base border border-red-100">
+                        <strong>💡 Conseil Coach :</strong> Gardez les abdos serrés tout le long pour protéger le bas du dos.
+                    </div>
+                `,
+                products: [
+                    { name: "VS Pace 20", price: "80€", img: "./images/chaussure-vs-pace-20.avif", desc: "Amorti dynamique." },
+                    { name: "Active 2 Hyrox", price: "99.99€", img: "./images/montre-connectee-avec-gps-active-2-mode-hyrox.avif", desc: "Suivi cardio temps réel." },
+                    { name: "Corde à sauter", price: "2.99€", img: "./images/corde-a-sauter-100-noir.avif", desc: "Roulements rapides." }
+                ]
+            }
+        };
+
+        function generateProgram() {
+            // 1. Récupérer les valeurs (Mise à jour : on récupère les inputs radio maintenant pour tout)
+            const goalInput = document.querySelector('input[name="goal"]:checked');
+            const levelInput = document.querySelector('input[name="level"]:checked'); // Nouveau car plus de select
+
+            if (!goalInput) { alert("Veuillez choisir un objectif."); return; }
+
+            const goal = goalInput.value;
+            const data = db[goal];
+
+            // 2. Remplir le DOM
+            document.getElementById('result-title').innerText = data.title;
+
+            // REMPLACEMENT EMOJI PAR VIDEO
+            const visualContainer = document.getElementById('exercise-visual').parentElement;
+            visualContainer.innerHTML = `
+                <iframe class="w-full h-full object-cover" 
+                    src="https://www.youtube.com/embed/${data.videoId}?rel=0&autoplay=1&mute=1" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>`;
+            // On enlève les classes d'animation qui ne servent plus pour l'iframe
+            visualContainer.className = "bg-black rounded-3xl h-80 flex items-center justify-center relative overflow-hidden shadow-lg";
+
+            document.getElementById('exercise-instructions').innerHTML = data.instructions;
+
+            // 3. Générer les produits (Style de carte mis à jour)
+            const productsContainer = document.getElementById('products-grid');
+            productsContainer.innerHTML = '';
+
+            data.products.forEach(product => {
+                // Vérifie si c'est une image (contient un point pour l'extension)
+                const isImage = product.img.includes('.');
+                const imgContent = isImage
+                    ? `<img src="${product.img}" class="h-full w-full object-contain p-2" alt="${product.name}">`
+                    : product.img;
+
+                const productCard = `
+                    <div class="bg-white rounded-[2rem] p-2 shadow-soft hover:shadow-lg transition-all group border border-transparent hover:border-gray-100">
+                        <div class="h-40 bg-gray-50 rounded-[1.5rem] flex items-center justify-center text-5xl group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                            ${imgContent}
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-lg text-decathlon-textdark">${product.name}</h4>
+                                <span class="font-bold text-decathlon-blue">${product.price}</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-4">${product.desc}</p>
+                            <button class="w-full bg-decathlon-textdark text-white font-bold py-3 rounded-xl hover:bg-decathlon-blue transition flex justify-center items-center gap-2 text-sm">
+                                Ajouter
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsContainer.innerHTML += productCard;
+            });
+
+            // 4. Switcher d'écran avec défilement doux
+            document.getElementById('quiz-section').classList.add('hidden');
+            const resultSection = document.getElementById('result-section');
+            resultSection.classList.remove('hidden');
+
+            // Scroll en haut du conteneur de droite
+            document.querySelector('.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            document.getElementById('profiling-form').reset();
+            // Scroll en haut du conteneur de droite
+            document.querySelector('.overflow-y-auto').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
