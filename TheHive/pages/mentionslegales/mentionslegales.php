@@ -25,7 +25,7 @@ require_once "../../php/navbar.php";
         <nav class="text-sm mb-6" aria-label="breadcrumb">
             <ol class="list-reset flex text-gray-700">
                 <li>
-                    <a href="../../index.php" class="text-blue-600 hover:underline">Accueil</a>
+                    <a href="../../index.html" class="text-blue-600 hover:underline">Accueil</a>
                 </li>
                 <li><span class="mx-2"> &gt; </span></li>
                 <li class="text-black font-semibold">Mentions légales</li>
@@ -36,7 +36,7 @@ require_once "../../php/navbar.php";
             <div class="mb-8">
                 <div class="flex border-b border-gray-200">
                     <button id="tab-mentions"
-                        class="tab-btn px-4 py-2 text-gray-700 font-semibold border-b-2 border-yellow-600 hover:border-yellow-400 focus:outline-none"
+                        class=" px-4 py-2 text-center text-gray-700 font-semibold"
                         >Mentions légales</button>
                 </div>
             </div>
@@ -46,7 +46,7 @@ require_once "../../php/navbar.php";
                 <section class="mb-8">
                     <h2 class="text-xl font-semibold text-gray-700 mb-2">1. Éditeur du site</h2>
                     <p class="text-gray-600">
-                        Le site www.THEHIVE.com est la propriété des étudiants de l'IUT de gustave Eiffel de meaux :
+                        Le site www.THEHIVE.com est la propriété des étudiants de l'IUT de gustave Eiffel de meaux :<br><br>
                             Maxime Derènes<br>
                             Témi Kergastel<br>
                             Sébastien Chisiu<br>

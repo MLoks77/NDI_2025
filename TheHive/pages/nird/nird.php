@@ -19,11 +19,11 @@ require_once "../../php/navbar.php";
     <link rel="manifest" href="../../images/favicon/site.webmanifest" />
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class=" text-gray-800 font-sans">
     
     <div class="w-full h-screen relative">
         <img src="../../images/NIRD_wallpaper.png" alt="Landing Background"
-            class="object-cover w-full h-full absolute inset-0 z-0" style="width:100vw; height:100vh;">
+            class="object-cover w-full h-full absolute inset-0 z-30" style="width:100vw; height:100vh;">
         
         <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40 z-10">
             </div>
@@ -109,7 +109,7 @@ require_once "../../php/navbar.php";
                             <span class="mr-2">🛡️</span> Lien avec The Hive
                         </h5>
                         <p class="text-sm text-gray-700 italic">
-                            The Hive promeut activement le logiciel libre. Utiliser Linux, c'est choisir un environnement où l'utilisateur est maître de sa machine, garantissant la souveraineté des données et la transparence. C'est également un acte pédagogique : former les citoyens de demain à un numérique critique et écocitoyen.
+                            The Hive promet activement le logiciel libre. Utiliser Linux, c'est choisir un environnement où l'utilisateur est maître de sa machine, garantissant la souveraineté des données et la transparence. C'est également un acte pédagogique : former les citoyens de demain à un numérique critique et écocitoyen.
                         </p>
                     </div>
                 </div>
@@ -117,6 +117,12 @@ require_once "../../php/navbar.php";
             </div>
         </div>
     </section>
+
+    <div class="flex justify-center my-8">
+        <a href="https://nird.forge.apps.education.fr" target="_blank" rel="noopener noreferrer" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full shadow transition duration-200">
+            Découvrir le site NIRD
+        </a>
+    </div>
     
     <?php
     require_once "../../php/footer.php";
