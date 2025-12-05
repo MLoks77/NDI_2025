@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Formulaire de la Gloire - La Ruche</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="bee-cursor" id="beeCursor"><i class="fas fa-bug"></i></div>
+
+    <div class="hive-container">
+        <div class="logo-container type-hive-vibration">
+            <img src="logo-bee.png" alt="Beehive Logo" class="hive-logo">
+        </div>
+
+        <h1>Le Formulaire de la Gloire</h1>
+        <p class="subtitle">Remplis les alvéoles pour réclamer ton destin !</p>
+
+        <form id="gloryForm" action="process.php" method="POST">
+            
+            <div class="hex-field-wrapper color-1">
+                <div class="hex-field-content">
+                    <label for="nom"><i class="fas fa-user"></i> Ton Blaze (Nom)</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Capitaine Miel...">
+                </div>
+            </div>
+
+            <div class="hex-field-wrapper color-2">
+                <div class="hex-field-content">
+                    <label for="email"><i class="fas fa-at"></i> Ton Nectar (Email)</label>
+                    <input type="email" id="email" name="email" required placeholder="buzz@ruche.com...">
+                </div>
+            </div>
+
+            <div class="hex-field-wrapper color-3">
+                <div class="hex-field-content">
+                    <label for="sujet"><i class="fas fa-crown"></i> Le Sujet Royal</label>
+                    <input type="text" id="sujet" name="sujet" required placeholder="J'AI GAGNÉ !">
+                </div>
+            </div>
+
+            <div class="hex-field-wrapper hex-textarea color-4">
+                <div class="hex-field-content">
+                    <label for="message"><i class="fas fa-sticky-note"></i> Ton Hymne (Message)</label>
+                    <textarea id="message" name="message" required placeholder="Déverse ton miel ici..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="queen-button">
+                <span class="btn-txt">ENVOYER LE BUZZ !</span>
+                <i class="fas fa-paper-plane icon-fly"></i>
+            </button>
+
+        </form>
+    </div>
+
+    <div id="gloryPopup" class="popup-overlay hidden">
+        <div class="popup-content hive-pop">
+            <div class="confetti-container" id="confetti"></div>
+            <i class="fas fa-trophy giant-icon"></i>
+            <h2>BZZZ ! C'EST DANS LA RUCHE !</h2>
+            <p>Félicitations, ton message a été téléporté à la Reine Mère.</p>
+            <p class="fun-fact">Fun Fact : Les abeilles battent des ailes 200 fois par seconde. Toi, tu viens de battre le record du formulaire le plus stylé.</p>
+            <button id="closePopup">Retour à la vie normale</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
