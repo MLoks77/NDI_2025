@@ -1,5 +1,5 @@
 <nav>
-<div class="flex items-center justify-center h-[120px] relative">
+<div class="flex items-center justify-center h-[120px] relative bg-white shadow">
     <img src="../../images/logonirdnoir.png" alt="Logo" class="h-12 w-12 mr-2">
     <span class="text-[2rem] text-black">THE HIVE</span>
     <!-- Hexagon with centered down-arrow, absolutely centered at bottom -->
@@ -15,13 +15,13 @@
     <!-- Dropdown menu, créé statiquement, responsive pour tous les écrans -->
     <div 
         id="navbarDropdownMenu"
-        style="display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 100%; background: #f7f7fa; border: 1px solid #141204; min-width: 200px; box-shadow: 0 2px 8px rgba(20,18,4,0.10); z-index: 52; padding: 18px 12px;"
+        style="display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 100%; background: #f7f7fa;  min-width: 200px; box-shadow: 0 2px 8px rgba(20,18,4,0.10); z-index: 52; padding: 18px 12px;"
         class="w-[95vw] max-w-lg flex flex-row flex-nowrap justify-center gap-6 py-4"
     >
         <!-- Ligne d'icônes centrées, chaque icône dans un hexagone -->
         <div class="flex flex-row flex-nowrap justify-center gap-6 w-full">
             <a 
-                href="../../index.php"
+                href="../../index.html"
                 class="flex flex-col items-center group"
                 style="text-decoration: none; color: #141204;"
             >

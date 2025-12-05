@@ -11,6 +11,13 @@ require_once "../../php/navbar.php";
     <title>The Hive - Mentions légales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
+
+    <link rel="icon" type="image/png" href="../../images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../../images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../images/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="THEHIVE" />
+    <link rel="manifest" href="../../images/favicon/site.webmanifest" />
 </head>
 
 <body>
@@ -31,18 +38,12 @@ require_once "../../php/navbar.php";
             <div class="flex border-b border-gray-200 mb-5">
                 <button
                     class="tab-btn py-2 px-4 text-gray-700 border-b-2 border-transparent font-semibold focus:outline-none"
-                    id="tab-ml"
-                    onclick="switchTab('ml')"
-                    type="button"
-                >
+                    id="tab-ml" onclick="switchTab('ml')" type="button">
                     Mentions légales
                 </button>
                 <button
                     class="tab-btn py-2 px-4 text-gray-700 border-b-2 border-transparent font-semibold focus:outline-none"
-                    id="tab-rgpd"
-                    onclick="switchTab('rgpd')"
-                    type="button"
-                >
+                    id="tab-rgpd" onclick="switchTab('rgpd')" type="button">
                     RGPD
                 </button>
             </div>
@@ -58,7 +59,7 @@ require_once "../../php/navbar.php";
     <script>
         function switchTab(tab) {
             const tabs = ['ml', 'rgpd'];
-            tabs.forEach(function(t) {
+            tabs.forEach(function (t) {
                 document.getElementById('content-' + t).classList.add('hidden');
                 document.getElementById('tab-' + t).classList.remove('border-blue-600', 'text-blue-600');
             });
