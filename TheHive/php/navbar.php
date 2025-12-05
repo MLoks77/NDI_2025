@@ -1,7 +1,7 @@
-<navbar>
+<nav>
 <div class="flex items-center justify-center h-[120px] relative">
-    <img src="../../images/logonirdnoir.png" alt="Logo" class="h-8 w-8 mr-2">
-    <span class="text-[2rem] text-black">The Hive</span>
+    <img src="../../images/logonirdnoir.png" alt="Logo" class="h-12 w-12 mr-2">
+    <span class="text-[2rem] text-black">THE HIVE</span>
     <!-- Hexagon with centered down-arrow, absolutely centered at bottom -->
     <button class="absolute left-1/2 z-999 transform -translate-x-1/2 translate-y-1/2 bottom-0 focus:outline-none" id="navbarDropdownButton">
         <svg width="48" height="48" viewBox="0 0 48 54" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +103,7 @@
         </div>
     </div>
 </div>
-</navbar>
+</nav>
 
 
 

@@ -8,8 +8,8 @@
     </section>
     <section>
         <div class="mb-5 flex flex-row justify-center">
-            <p class="bold pr-2 text-xl">@2025 Thehive</p>
-            <a class="hover:text-bold border-l pl-2 border-black text-xl" href="../../pages/mentionslegales.php">Mentions légales</a>
+            <p class="bold pr-2 text-[20px]">@2025 Thehive</p>
+            <a class="hover:text-bold border-l pl-2 border-black text-[20px]" href="../../pages/mentionslegales.php">Mentions légales</a>
         </div>
     </section>
 </footer>
