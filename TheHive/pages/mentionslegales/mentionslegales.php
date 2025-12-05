@@ -33,46 +33,11 @@ require_once "../../php/navbar.php";
             </ol>
         </nav>
 
-        <!-- Tab Switchers -->
         <div>
-            <div class="flex border-b border-gray-200 mb-5">
-                <button
-                    class="tab-btn py-2 px-4 text-gray-700 border-b-2 border-transparent font-semibold focus:outline-none"
-                    id="tab-ml" onclick="switchTab('ml')" type="button">
-                    Mentions légales
-                </button>
-                <button
-                    class="tab-btn py-2 px-4 text-gray-700 border-b-2 border-transparent font-semibold focus:outline-none"
-                    id="tab-rgpd" onclick="switchTab('rgpd')" type="button">
-                    RGPD
-                </button>
-            </div>
-
-            <div id="content-ml" class="tab-content">
-                <!-- Mettez ici votre texte pour les mentions légales -->
-            </div>
-            <div id="content-rgpd" class="tab-content hidden">
-                <!-- Mettez ici votre texte pour le RGPD -->
-            </div>
+            <!-- Mettez ici votre texte pour les mentions légales -->
         </div>
     </div>
-    <script>
-        function switchTab(tab) {
-            const tabs = ['ml', 'rgpd'];
-            tabs.forEach(function (t) {
-                document.getElementById('content-' + t).classList.add('hidden');
-                document.getElementById('tab-' + t).classList.remove('border-blue-600', 'text-blue-600');
-            });
-            document.getElementById('content-' + tab).classList.remove('hidden');
-            document.getElementById('tab-' + tab).classList.add('border-blue-600', 'text-blue-600');
-        }
-        switchTab('ml');
-    </script>
-    <style>
-
-    </style>
 </body>
-
 
 <?php
 require_once "../../php/footer.php";
