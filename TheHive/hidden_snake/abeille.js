@@ -1,7 +1,3 @@
-/**
- * Traduction du programme main.py en JavaScript (Canvas)
- * Correction de la synchronisation de l'initialisation.
- */
 
 // --- Classe Jeu ---
 class Jeu {
@@ -26,7 +22,7 @@ class Jeu {
         // --- Paramètres de Jeu ---
         this.jeu_actif = false;
         this.debut = false;
-        this.vit = 1; // Vitesse en pixels/frame
+        this.vit = 4; // Vitesse en pixels/frame
         
         // game_speed est le nombre de frames nécessaires pour traverser une case (20 / 2 = 10)
         this.game_speed = this.box / this.vit; 
@@ -208,7 +204,7 @@ class Jeu {
     }
 
     finJeu() {
-        return this.score >= 1000;
+        return this.score >= 300;
     }
 
     // --- Fonctions de Rendu Graphique (inchangées) ---

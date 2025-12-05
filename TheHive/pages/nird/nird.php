@@ -45,6 +45,8 @@ require_once "../../php/navbar.php";
             <div class="text-center mb-6">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Accès Secret</h3>
                 <p class="text-gray-600 mb-4">Entrez le mot de passe pour accéder au jeu</p>
+                <p class="text-gray-600 mb-4">Ex: mot1 mot2 mot3</p>
+                <p class="text-gray-600 mb-4">aucun accent, aucune majuscule</p>
                 
                 <!-- Indice avec ronds colorés -->
                 <div class="flex justify-center items-center gap-3 mb-6">
@@ -166,10 +168,32 @@ require_once "../../php/navbar.php";
             e.preventDefault();
             
             const password = document.getElementById('snakePassword').value.trim().toLowerCase();
-            const validPasswords = ['reconditionnement', 'durabilité', 'durabilite', 'linux'];
+            // Accepter les 3 mots ensemble (avec ou sans accents, avec espaces)
+            const validPasswords = [
+                'reconditionnement durabilité linux',
+                'reconditionnement durabilite linux',
+                'reconditionnement durabilité linux',
+                'reconditionnement durabilite linux',
+                'linux reconditionnement durabilité',
+                'linux reconditionnement durabilite',
+                'durabilité reconditionnement linux',
+                'durabilite reconditionnement linux'
+            ];
             const errorMessage = document.getElementById('errorMessage');
             
-            if (validPasswords.includes(password)) {
+            // Normaliser l'entrée : supprimer les accents et espaces multiples
+            const normalizedPassword = password
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Supprimer les accents
+                .replace(/\s+/g, ' ') // Remplacer les espaces multiples par un seul
+                .trim();
+            
+            // Vérifier si les 3 mots sont présents (dans n'importe quel ordre)
+            const hasReconditionnement = normalizedPassword.includes('reconditionnement');
+            const hasDurabilite = normalizedPassword.includes('durabilite') || normalizedPassword.includes('durabilité');
+            const hasLinux = normalizedPassword.includes('linux');
+            
+            if (hasReconditionnement && hasDurabilite && hasLinux) {
                 // Redirection vers le jeu snake
                 window.location.href = '../../hidden_snake/abeille.html';
             } else {
