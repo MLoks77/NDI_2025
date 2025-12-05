@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<title>Connexion / Inscription</title>
+	<link rel="stylesheet" href="stylelog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h2>Se connecter / Créer un compte</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="traitement_inscription.php" method="POST">
+                <h1>Créer un compte</h1>
+                <input type="text" placeholder="Nom" name="Nom" required />
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="password" placeholder="Mot de passe" name="MDP" required />
+                <button type="submit" name="envoyer">Créer le compte</button>
+            </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <form action="check_login.php" method="POST">
+                <h1>Se connecter</h1>
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="password" placeholder="Mot de passe" name="MDP" required />
+                <button type="submit" name="envoyer">Se connecter</button>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>De retour !</h1>
+                    <p>Pour rester connecté, utilisez vos informations personnelles.</p>
+                    <button class="ghost" id="signIn">Se connecter</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Bonjour, l'ami !</h1>
+                    <p>Renseigne tes informations personnelles et commence ta journée avec nous</p>
+                    <button class="ghost" id="signUp">Créer un compte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<script src="scriptlog.js"></script>
+</body>
+</html>
