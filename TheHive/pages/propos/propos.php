@@ -68,65 +68,65 @@ require_once "../../php/navbar.php";
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
-                        AM</div>
-                    <div class="font-semibold">Alice Martin</div>
-                    <p class="text-sm text-gray-600 text-center">Développeuse Front-end</p>
+                        MD</div>
+                    <div class="font-semibold">Maxime Derènes</div>
+                    <p class="text-sm text-gray-600 text-center">MMI2</p>
                 </div>
                 <!-- Membre 2 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
-                        BJ</div>
-                    <div class="font-semibold">Benjamin Jean</div>
-                    <p class="text-sm text-gray-600 text-center">UI/UX Designer</p>
+                        MD</div>
+                    <div class="font-semibold">Témi kergastel</div>
+                    <p class="text-sm text-gray-600 text-center">MMI2</p>
                 </div>
                 <!-- Membre 3 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         CL</div>
-                    <div class="font-semibold">Claire Leroy</div>
-                    <p class="text-sm text-gray-600 text-center">Chef·fe de projet</p>
+                    <div class="font-semibold">Axel Treffaut</div>
+                    <p class="text-sm text-gray-600 text-center">MMI2</p>
                 </div>
                 <!-- Membre 4 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         DS</div>
-                    <div class="font-semibold">David Simo</div>
-                    <p class="text-sm text-gray-600 text-center">Développeur Back-end</p>
+                    <div class="font-semibold">Timéo Da Costa</div>
+                    <p class="text-sm text-gray-600 text-center">MMI2</p>
                 </div>
                 <!-- Membre 5 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         EM</div>
-                    <div class="font-semibold">Emma Marchal</div>
-                    <p class="text-sm text-gray-600 text-center">Rédactrice & Communication</p>
+                    <div class="font-semibold">Sebastian Chisiu</div>
+                    <p class="text-sm text-gray-600 text-center">MMI2</p>
                 </div>
                 <!-- Membre 6 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         FL</div>
-                    <div class="font-semibold">François Leroy</div>
-                    <p class="text-sm text-gray-600 text-center">Intégrateur Web</p>
+                    <div class="font-semibold">Alexis Dumoulin</div>
+                    <p class="text-sm text-gray-600 text-center">MMI1</p>
                 </div>
                 <!-- Membre 7 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         GS</div>
-                    <div class="font-semibold">Gabriel Sauvage</div>
-                    <p class="text-sm text-gray-600 text-center">Designer Graphique</p>
+                    <div class="font-semibold">Matt Rudman</div>
+                    <p class="text-sm text-gray-600 text-center">MMI1</p>
                 </div>
                 <!-- Membre 8 -->
                 <div class="bg-white shadow rounded-lg p-4 flex flex-col items-center">
                     <div
                         class="w-20 h-20 bg-yellow-100 rounded-full mb-2 flex items-center justify-center text-2xl font-bold text-yellow-700">
                         HR</div>
-                    <div class="font-semibold">Helena Rousseau</div>
-                    <p class="text-sm text-gray-600 text-center">Développeuse Fullstack</p>
+                    <div class="font-semibold">Abdelrahman al-khatibi</div>
+                    <p class="text-sm text-gray-600 text-center">MMI1</p>
                 </div>
             </div>
         </section>
