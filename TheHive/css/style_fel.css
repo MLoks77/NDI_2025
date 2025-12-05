@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "ClashGrotesk";
+    src: url('./font/ClashGrotesk-Semibold.woff');
+}
+
+html {
+    background-color: #141204;
+    background-image: url('../images/felicitations.png');
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: "ClashGrotesk", cursive;
+    font-weight: bolder;
+    font-size: 8rem;
+    margin: 0;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #F5C857;
+    text-align: center;
+    font-family: "ClashGrotesk", cursive;
+    font-weight: bolder;
+    font-size: 1.8rem;
+    opacity: 0.63;
+}
+
+.touches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    gap: 200px;
+}
+
+.touche {
+    text-align: center;
+    color: white;
+    font-family: "ClashGrotesk", cursive;
+    font-size: 4rem;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-color: #1a1a1a00;
+    border: 5px solid #ffffff;
+    border-radius: 35px;
+    box-shadow: 12px 12px 0px #ffffff; 
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.touche.active {
+    transform: translate(6px, 6px);
+    box-shadow: 6px 6px 0px #ffffff;
+}
+
+.touche p {
+    margin: 25%;
+}
